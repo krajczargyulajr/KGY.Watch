@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:KGY.Watch"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ContextMenu x:Key="NotificationIconMenu">
+            <MenuItem Header="Properties" />
+            <Separator />
+            <MenuItem Header="Exit" x:Name="ExitMenuItem" Click="ExitMenuItem_Click" />
+        </ContextMenu>
     </Application.Resources>
 </Application>
