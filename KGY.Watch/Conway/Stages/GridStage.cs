@@ -6,6 +6,8 @@ namespace KGY.Watch.Conway.Stages
     {
         public bool IsInitialized { get; set; }
 
+        public bool IsAlive { get; private set; } = false;
+
         public uint Width { get; set; }
 
         public uint Height { get; set; }
@@ -63,6 +65,8 @@ namespace KGY.Watch.Conway.Stages
         public void SetCell(uint x, uint y, bool value)
         {
             Cells[x, y] = value;
+
+            if (value) IsAlive = true;
         }
 
         public IStage Clone()

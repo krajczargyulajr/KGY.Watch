@@ -6,6 +6,8 @@
 
         uint Height { get; }
 
+        bool IsAlive { get; }
+
         void Initialize();
 
         void Clear();

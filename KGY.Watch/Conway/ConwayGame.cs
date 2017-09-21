@@ -80,24 +80,29 @@ namespace KGY.Watch
                     for (uint y = 0; y < Stage.Height; ++y)
                     {
                         var neighborCount = Stage.NeighborCount(x, y);
-                        if (Stage.GetCell(x, y))
+                        var cell = Stage.GetCell(x, y);
+                        if (cell)
                         {
                             if (neighborCount < 2 || neighborCount > 3)
                             {
                                 nextStage.SetCell(x, y, false);
                             }
                         }
+                        else if (neighborCount == 3)
+                        {
+                            nextStage.SetCell(x, y, true);
+                        }
                         else
                         {
-                            if (neighborCount == 3)
-                            {
-                                nextStage.SetCell(x, y, true);
-                            }
+                            nextStage.SetCell(x, y, cell);
                         }
                     }
                 }
 
-                Stage = nextStage;
+                if (nextStage.IsAlive)
+                {
+                    Stage = nextStage;
+                }
             }
         }
 

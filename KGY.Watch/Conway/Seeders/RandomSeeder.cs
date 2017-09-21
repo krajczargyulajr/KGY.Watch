@@ -13,7 +13,7 @@ namespace KGY.Watch.Conway.Seeders
                 for (uint y = 0; y < game.Stage.Height; ++y)
                 {
                     var rnext = r.Next(10);
-                    if (rnext > 8) game.Stage.SetCell(x, y, true);
+                    if (rnext > 4) game.Stage.SetCell(x, y, true);
                     else game.Stage.SetCell(x, y, false);
                 }
             }
