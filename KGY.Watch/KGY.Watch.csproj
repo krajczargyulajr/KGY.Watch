@@ -56,6 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Conway\Seeders\ISeeder.cs" />
+    <Compile Include="Conway\Seeders\RandomSeeder.cs" />
+    <Compile Include="Conway\Stages\GridStage.cs" />
+    <Compile Include="Conway\Stages\IStage.cs" />
+    <Compile Include="RandomUintExtensions.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,7 +69,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Conway.cs" />
+    <Compile Include="BitmapOutput.cs" />
+    <Compile Include="Conway\ConwayGame.cs" />
+    <Compile Include="Conway\Disasters\ABomb.cs" />
+    <Compile Include="Conway\Disasters\IDisaster.cs" />
+    <Compile Include="Conway\Disasters\Meteor.cs" />
+    <Compile Include="Conway\Disasters\Napalm.cs" />
+    <Compile Include="Conway\Renderers\CanvasRenderer.cs" />
+    <Compile Include="Conway\Renderers\IRenderer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
