@@ -12,6 +12,8 @@
 
         void Clear(uint xFrom, uint xTo, uint yFrom, uint yTo);
 
+        IStage Clone();
+
         bool GetCell(uint x, uint y);
 
         void SetCell(uint x, uint y, bool value);

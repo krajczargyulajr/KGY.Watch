@@ -73,6 +73,8 @@ namespace KGY.Watch
             }
             else
             {
+                IStage nextStage = Stage.Clone();
+
                 for (uint x = 0; x < Stage.Width; ++x)
                 {
                     for (uint y = 0; y < Stage.Height; ++y)
@@ -82,18 +84,20 @@ namespace KGY.Watch
                         {
                             if (neighborCount < 2 || neighborCount > 3)
                             {
-                                Stage.SetCell(x, y, false);
+                                nextStage.SetCell(x, y, false);
                             }
                         }
                         else
                         {
                             if (neighborCount == 3)
                             {
-                                Stage.SetCell(x, y, true);
+                                nextStage.SetCell(x, y, true);
                             }
                         }
                     }
                 }
+
+                Stage = nextStage;
             }
         }
 

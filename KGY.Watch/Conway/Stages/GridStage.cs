@@ -64,5 +64,17 @@ namespace KGY.Watch.Conway.Stages
         {
             Cells[x, y] = value;
         }
+
+        public IStage Clone()
+        {
+            var clone = new GridStage()
+            {
+                Width = Width,
+                Height = Height
+            };
+            clone.Initialize();
+
+            return clone;
+        }
     }
 }
