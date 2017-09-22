@@ -4,7 +4,7 @@ namespace KGY.Watch.Conway.Disasters
 {
     public class Meteor : IDisaster
     {
-        public void Strike(ConwayGame game)
+        public void Strike(IGame game)
         {
             var r = new Random();
             uint startX = r.Next(game.Stage.Width);

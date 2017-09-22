@@ -2,6 +2,6 @@
 {
     public interface IDisaster
     {
-        void Strike(ConwayGame game);
+        void Strike(IGame game);
     }
 }

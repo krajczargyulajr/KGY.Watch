@@ -4,7 +4,7 @@ namespace KGY.Watch.Conway.Disasters
 {
     public class Napalm : IDisaster
     {
-        public void Strike(ConwayGame game)
+        public void Strike(IGame game)
         {
             game.Stage.Clear();
 
