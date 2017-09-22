@@ -1,4 +1,5 @@
-﻿using KGY.Watch.Conway.Renderers;
+﻿using KGY.Watch.Conway.Logic;
+using KGY.Watch.Conway.Renderers;
 using KGY.Watch.Conway.Seeders;
 using KGY.Watch.Conway.Stages;
 using System;
@@ -61,6 +62,7 @@ namespace KGY.Watch
             uint height = (uint)Math.Floor(ConwayCanvas.ActualHeight / 3);
             conway = new ConwayGame()
             {
+                GameLogic = new ConwayLogic(),
                 Renderer = new CanvasRenderer(ConwayCanvas),
                 Seeder = new RandomSeeder(),
                 Stage = new GridStage()

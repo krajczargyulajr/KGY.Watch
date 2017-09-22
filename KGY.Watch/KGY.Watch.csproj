@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Conway\IGame.cs" />
+    <Compile Include="Conway\Logic\ConwayLogic.cs" />
+    <Compile Include="Conway\Logic\IGameLogic.cs" />
     <Compile Include="Conway\Seeders\ISeeder.cs" />
     <Compile Include="Conway\Seeders\RandomSeeder.cs" />
     <Compile Include="Conway\Stages\GridStage.cs" />

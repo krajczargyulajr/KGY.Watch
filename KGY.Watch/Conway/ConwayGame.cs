@@ -1,4 +1,5 @@
-﻿using KGY.Watch.Conway.Disasters;
+﻿using KGY.Watch.Conway;
+using KGY.Watch.Conway.Logic;
 using KGY.Watch.Conway.Renderers;
 using KGY.Watch.Conway.Seeders;
 using KGY.Watch.Conway.Stages;
@@ -8,7 +9,7 @@ using System.Windows;
 
 namespace KGY.Watch
 {
-    public class ConwayGame
+    public class ConwayGame : IGame
     {
         public bool IsInitialized { get; private set; }
 
@@ -19,6 +20,8 @@ namespace KGY.Watch
         public ISeeder Seeder { get; set; }
 
         public IStage Stage { get; set; }
+
+        public IGameLogic GameLogic { get; set; }
 
         public ConwayGame()
         {
@@ -31,6 +34,7 @@ namespace KGY.Watch
             if (IsInitialized) return;
 
             if (Stage == null) throw new Exception("Stage is not set");
+            if (GameLogic == null) throw new Exception("Game logic is not set");
 
             Stage.Initialize();
 
@@ -64,63 +68,7 @@ namespace KGY.Watch
 
         public void Turn()
         {
-            Random r = new Random();
-            var isDisasterTime = r.Next(100) > 90;
-
-            if (isDisasterTime)
-            {
-                IntroduceDisaster();
-            }
-            else
-            {
-                IStage nextStage = Stage.Clone();
-
-                for (uint x = 0; x < Stage.Width; ++x)
-                {
-                    for (uint y = 0; y < Stage.Height; ++y)
-                    {
-                        var neighborCount = Stage.NeighborCount(x, y);
-                        var cell = Stage.GetCell(x, y);
-                        if (cell)
-                        {
-                            if (neighborCount < 2 || neighborCount > 3)
-                            {
-                                nextStage.SetCell(x, y, false);
-                            }
-                        }
-                        else if (neighborCount == 3)
-                        {
-                            nextStage.SetCell(x, y, true);
-                        }
-                        else
-                        {
-                            nextStage.SetCell(x, y, cell);
-                        }
-                    }
-                }
-
-                if (nextStage.IsAlive)
-                {
-                    Stage = nextStage;
-                }
-            }
-        }
-
-        public void IntroduceDisaster()
-        {
-            var rSeed = new Random(DateTime.Now.Second).Next(100);
-
-            IDisaster disaster = null;
-
-            if (rSeed < 30) Console.WriteLine("Lucky bastard");
-            else if (rSeed < 60) disaster = new ABomb();
-            else if (rSeed < 95) disaster = new Meteor();
-            else disaster = new Napalm();
-
-            if (disaster != null)
-            {
-                disaster.Strike(this);
-            }
+            GameLogic.Turn(this);
         }
     }
 }
