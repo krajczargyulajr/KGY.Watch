@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KGY.Watch"
         mc:Ignorable="d" WindowStyle="None" Topmost="True"
         MouseDown="Window_MouseDown" ShowInTaskbar="False"
-        Title="MainWindow" Height="362" Width="208" Unloaded="Window_Unloaded" Loaded="Window_Loaded">
+        Title="MainWindow" Height="402" Width="208" Unloaded="Window_Unloaded" Loaded="Window_Loaded">
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem x:Name="ExitMenuItem" Click="ExitMenuItem_Click" Header="Exit" />
@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="90" />
             <RowDefinition />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="txtTime"
                    Foreground="Green" Text="12:34"
@@ -24,5 +25,7 @@
                    Grid.Row="0" />
 
         <Canvas x:Name="ConwayCanvas" Grid.Row="1"></Canvas>
+
+        <Button Grid.Row="2" Content="Snake" Background="Black" Foreground="Green" Margin="3" BorderBrush="Green" Click="StartSnakeButton_Click" />
     </Grid>
 </Window>

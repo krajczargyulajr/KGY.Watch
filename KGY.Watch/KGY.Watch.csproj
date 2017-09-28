@@ -58,12 +58,17 @@
     </ApplicationDefinition>
     <Compile Include="Conway\IGame.cs" />
     <Compile Include="Conway\Logic\ConwayLogic.cs" />
+    <Compile Include="Conway\Logic\ConwayWrongLogic.cs" />
     <Compile Include="Conway\Logic\IGameLogic.cs" />
+    <Compile Include="Conway\Renderers\BitmapRenderer.cs" />
     <Compile Include="Conway\Seeders\ISeeder.cs" />
     <Compile Include="Conway\Seeders\RandomSeeder.cs" />
     <Compile Include="Conway\Stages\GridStage.cs" />
     <Compile Include="Conway\Stages\IStage.cs" />
     <Compile Include="RandomUintExtensions.cs" />
+    <Compile Include="Snake\SnakeGameWindow.xaml.cs">
+      <DependentUpon>SnakeGameWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +89,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Snake\SnakeGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

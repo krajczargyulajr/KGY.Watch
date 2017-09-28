@@ -2,6 +2,7 @@
 using KGY.Watch.Conway.Renderers;
 using KGY.Watch.Conway.Seeders;
 using KGY.Watch.Conway.Stages;
+using KGY.Watch.Snake;
 using System;
 using System.Timers;
 using System.Windows;
@@ -31,10 +32,17 @@ namespace KGY.Watch
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Dispatcher.Invoke(() =>
+            try
             {
-                txtTime.Text = $"{DateTime.Now.ToShortTimeString()}";
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    txtTime.Text = $"{DateTime.Now.ToShortTimeString()}";
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,8 +70,10 @@ namespace KGY.Watch
             uint height = (uint)Math.Floor(ConwayCanvas.ActualHeight / 3);
             conway = new ConwayGame()
             {
-                GameLogic = new ConwayLogic(),
-                Renderer = new CanvasRenderer(ConwayCanvas),
+                // GameLogic = new ConwayLogic(),
+                GameLogic = new ConwayWrongLogic(),
+                // Renderer = new CanvasRenderer(ConwayCanvas),
+                Renderer = new BitmapRenderer(ConwayCanvas),
                 Seeder = new RandomSeeder(),
                 Stage = new GridStage()
                 {
@@ -73,6 +83,11 @@ namespace KGY.Watch
             };
 
             conway.Start();
+        }
+
+        private void StartSnakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            new SnakeGameWindow().Show();
         }
     }
 }
